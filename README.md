@@ -76,6 +76,38 @@ To run the project, you need to have the following installed:
   - Personalized user dashboards
   - Profile management
 
+## API Access with Postman
+
+To access protected APIs in ArkaneGames using Postman, you'll need to authenticate first. Here are the methods:
+
+### Method 1: Using Session Cookies
+
+1. **Authenticate via the form login endpoint**:
+   - Send a POST request to `http://localhost:8080/login`
+   - In the Body tab, select `x-www-form-urlencoded`
+   - Add key-value pairs:
+     - `username`: your_email@example.com
+     - `password`: your_password
+   - Make sure "Automatically follow redirects" is enabled
+   - Send the request
+
+2. **Use the session cookie for subsequent requests**:
+   - After successful login, Postman will store the session cookie (JSESSIONID)
+   - All subsequent requests will automatically include this cookie
+   - Make requests to any protected endpoint (e.g., `http://localhost:8080/api/games`)
+
+### Method 2: Using OAuth2 Tokens
+
+For a more API-friendly approach when using tools like Postman:
+
+1. **Log in through the web interface** with your OAuth2 provider (Google or GitHub)
+2. **Use browser developer tools** to copy your JSESSIONID cookie
+3. **In Postman**, add the cookie to your requests:
+   - Go to the "Cookies" section
+   - Add the JSESSIONID cookie with the value from your browser
+
+> Note: The application uses session-based authentication. This ensures a secure and simple authentication flow for both web and API access.
+
 ## Development
 
 ### Project Structure
